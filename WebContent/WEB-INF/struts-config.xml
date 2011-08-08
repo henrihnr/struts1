@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    	<form-bean name="PersonForm" type="app.web.form.PersonForm" />
+
+    </form-beans>
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+    	<action path="/person" type="app.web.controller.PersonDispatchAction"
+            name="PersonForm" scope="request" validate="false" input="/jsp/personSearch.jsp" parameter="act">
+            <forward name="search" path="/jsp/personSearch.jsp"/>
+            <forward name="detail" path="/jsp/personDetail.jsp"/>
+        </action>
+        
+    </action-mappings>
+
+<!-- ============================================= Controller Configuration -->
+
+    <controller processorClass="app.web.controller.AppRequestProcessor"/>
+
+<!-- ======================================== Message Resources Definitions -->
+
+    <message-resources parameter="MessageResources" />
+
+<!-- =============================================== Plug Ins Configuration -->
+
+
+</struts-config>
+

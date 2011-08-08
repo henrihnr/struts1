@@ -1,0 +1,14 @@
+struts1
+-----------------------
+struts1 adalah aplikasi untuk belajar JAVA web menggunakan Struts 1
+
+Cara Menggunakan
+----------------
+1. Import project menggunakan IDE kesayangan Anda
+2. Edit konfigurasi database di file src\jdbc.properties
+3. Run app.util.DatabaseTableGenerator.java untuk membuat table database
+4. Run Aplikasi
+
+Kebutuhan Aplikasi
+------------------
+1. Java SDK versi 1.5 atau versi terbaru

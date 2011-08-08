@@ -1,0 +1,1 @@
+<% response.sendRedirect("person.do?act=Search"); %>
