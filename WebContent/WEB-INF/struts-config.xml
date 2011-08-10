@@ -9,17 +9,17 @@
 <!-- ================================================ Form Bean Definitions -->
 
     <form-beans>
-    	<form-bean name="PersonForm" type="app.web.form.PersonForm" />
+    	<form-bean name="EmployeeForm" type="app.web.form.EmployeeForm" />
 
     </form-beans>
 
 <!-- =========================================== Action Mapping Definitions -->
 
     <action-mappings>
-    	<action path="/person" type="app.web.controller.PersonDispatchAction"
-            name="PersonForm" scope="request" validate="false" input="/jsp/personSearch.jsp" parameter="act">
-            <forward name="search" path="/jsp/personSearch.jsp"/>
-            <forward name="detail" path="/jsp/personDetail.jsp"/>
+    	<action path="/employee" type="app.web.controller.EmployeeDispatchAction"
+            name="EmployeeForm" scope="request" validate="false" input="/jsp/employeeSearch.jsp" parameter="act">
+            <forward name="search" path="/jsp/employeeSearch.jsp"/>
+            <forward name="detail" path="/jsp/employeeDetail.jsp"/>
         </action>
         
     </action-mappings>

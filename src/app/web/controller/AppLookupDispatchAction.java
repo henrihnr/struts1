@@ -12,7 +12,7 @@ import org.apache.struts.actions.LookupDispatchAction;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import app.service.PersonService;
+import app.service.DatabaseService;
 
 public class AppLookupDispatchAction extends LookupDispatchAction {
 
@@ -37,13 +37,13 @@ public class AppLookupDispatchAction extends LookupDispatchAction {
 		ServletContext servletContext = actionServlet.getServletContext();
 		WebApplicationContext wac = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 		
-		this.personService = (PersonService) wac.getBean("personService");
+		this.databaseService = (DatabaseService) wac.getBean("databaseService");
 	}
 	
-	private PersonService personService;
+	private DatabaseService databaseService;
 
-	public PersonService getPersonService() {
-		return personService;
+	public DatabaseService getDatabaseService() {
+		return databaseService;
 	}
 
 }

@@ -1,1 +1,1 @@
-<% response.sendRedirect("person.do?act=Search"); %>
+<% response.sendRedirect("employee.do?act=Search"); %>

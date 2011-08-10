@@ -10,20 +10,20 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import app.domain.Person;
-import app.web.form.PersonForm;
+import app.domain.Employee;
+import app.web.form.EmployeeForm;
 
-public class PersonDispatchAction extends AppLookupDispatchAction {
+public class EmployeeDispatchAction extends AppLookupDispatchAction {
 
 	public ActionForward search (ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		PersonForm personForm = (PersonForm) form;
+		EmployeeForm employeeForm = (EmployeeForm) form;
 		
-		List<Person> persons = getPersonService().listAll(personForm.getOffset(), personForm.getPageSize());
+		List<Employee> persons = getDatabaseService().listAll(employeeForm.getOffset(), employeeForm.getPageSize());
 		
 		if (persons != null && !persons.isEmpty()) {
-			request.setAttribute("persons", persons);
+			request.setAttribute("employees", persons);
 		}
 		
 		return mapping.findForward("search");
@@ -32,14 +32,14 @@ public class PersonDispatchAction extends AppLookupDispatchAction {
 	public ActionForward show (ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		PersonForm personForm = (PersonForm) form;
+		EmployeeForm employeeForm = (EmployeeForm) form;
 		
 		try {
-			Long id = personForm.getId();
+			Long id = employeeForm.getId();
 			if (id != null) {
-				Person person = getPersonService().findById(id);
+				Employee employee = getDatabaseService().findById(id);
 				
-				BeanUtils.copyProperties(personForm, person);
+				BeanUtils.copyProperties(employeeForm, employee);
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -51,16 +51,16 @@ public class PersonDispatchAction extends AppLookupDispatchAction {
 	public ActionForward add (ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		PersonForm personForm = (PersonForm) form;
+		EmployeeForm employeeForm = (EmployeeForm) form;
 		
 		try {
-			Person person = new Person();
+			Employee employee = new Employee();
 			
-			BeanUtils.copyProperties(person, personForm);
-			person.setId(null);
+			BeanUtils.copyProperties(employee, employeeForm);
+			employee.setId(null);
 			
-			person = getPersonService().save(person);
-			BeanUtils.copyProperties(personForm, person);
+			employee = getDatabaseService().save(employee);
+			BeanUtils.copyProperties(employeeForm, employee);
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -72,14 +72,14 @@ public class PersonDispatchAction extends AppLookupDispatchAction {
 	public ActionForward modify (ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 
-		PersonForm personForm = (PersonForm) form;
+		EmployeeForm employeeForm = (EmployeeForm) form;
 		
 		try {
-			Person person = getPersonService().findById(personForm.getId());
+			Employee employee = getDatabaseService().findById(employeeForm.getId());
 				
-			BeanUtils.copyProperties(person, personForm);
+			BeanUtils.copyProperties(employee, employeeForm);
 			
-			getPersonService().save(person);
+			getDatabaseService().save(employee);
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -91,10 +91,10 @@ public class PersonDispatchAction extends AppLookupDispatchAction {
 	public ActionForward delete (ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		PersonForm personForm = (PersonForm) form;
+		EmployeeForm employeeForm = (EmployeeForm) form;
 		
 		try {
-			getPersonService().delete(personForm.getId());
+			getDatabaseService().delete(employeeForm.getId());
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}

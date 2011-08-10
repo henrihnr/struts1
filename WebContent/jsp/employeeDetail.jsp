@@ -25,17 +25,18 @@
   </head>
   
   <body>
-<html:form action="person">
+<html:form action="employee">
+	<html:hidden property="id"/>
+	
   	<div class="content">
-  		<h1>Person Detail</h1>
+  		<h1>Employee Detail</h1>
         
         <div class="data">
             <table>
                 <tr>
-                    <td width="30%">ID</td>
+                    <td width="30%">NPK</td>
                     <td>
-                    	<html:text property="id" disabled="true"/>
-                    	<html:hidden property="id"/>
+                    	<html:text property="npk"/>
                    	</td>
                 </tr>
                 <tr>
@@ -61,13 +62,13 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                      <logic:empty name="PersonForm" property="id">
+                      <logic:empty name="EmployeeForm" property="id">
                     	<html:submit property="act">
                     		<bean:message key="app.nav.add"/>
                     	</html:submit>
                       </logic:empty>
                       
-                      <logic:notEmpty name="PersonForm" property="id">
+                      <logic:notEmpty name="EmployeeForm" property="id">
                     	<html:submit property="act">
                     		<bean:message key="app.nav.modify"/>
                     	</html:submit>
@@ -81,7 +82,7 @@
             </table>
         </div>
         <br/>
-        <a href="person.do?act=Search" class="back">back to Person Search</a>
+        <a href="employee.do?act=Search" class="back">back to Employee Search</a>
   	</div>
 </html:form>
   </body>

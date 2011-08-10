@@ -20,9 +20,9 @@
   </head>
   
   <body>
-<html:form action="person">
+<html:form action="employee">
   	<div class="content">
-  		<h1>Person Search</h1>
+  		<h1>Employee Search</h1>
   		
         <div class="paging">
 			<html:hidden property="offset"/>
@@ -34,40 +34,40 @@
         <div class="data">
             <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
-                    <th>ID</th>
+                    <th>NPK</th>
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Date of Birth (dd-mm-yyyy)</th>
                     <th>Actions</th>
                 </tr>
-              <logic:present name="persons">
-              <logic:iterate name="persons" id="person">
+              <logic:present name="employees">
+              <logic:iterate name="employees" id="employee">
                 <tr>
-                    <td><bean:write name="person" property="id"/></td>
-                    <td><bean:write name="person" property="name"/></td>
+                    <td><bean:write name="employee" property="npk"/></td>
+                    <td><bean:write name="employee" property="name"/></td>
                     <td>
-                    	<logic:equal name="person" property="gender" value="m">
+                    	<logic:equal name="employee" property="gender" value="m">
                     		Male
                     	</logic:equal>
-                    	<logic:equal name="person" property="gender" value="f">
+                    	<logic:equal name="employee" property="gender" value="f">
                     		Female
                     	</logic:equal>
                     </td>
-                    <td><bean:write name="person" property="dob" format="dd-MM-yyyy"/></td>
+                    <td><bean:write name="employee" property="dob" format="dd-MM-yyyy"/></td>
                     <td>
-                        <a href="person.do?act=Show&id=<bean:write name="person" property="id"/>" class="view">Show</a>
-                        <a href="person.do?act=Delete&id=<bean:write name="person" property="id"/>" class="delete">Delete</a>
+                        <a href="employee.do?act=Show&id=<bean:write name="employee" property="id"/>" class="view">Show</a>
+                        <a href="employee.do?act=Delete&id=<bean:write name="employee" property="id"/>" class="delete">Delete</a>
                     </td>
                 </tr>
               </logic:iterate>
               </logic:present>
-              <logic:notPresent name="persons">
-                <tr><td colspan="5">No Person Data</td></tr>
+              <logic:notPresent name="employees">
+                <tr><td colspan="5">No Employee Data</td></tr>
               </logic:notPresent>
             </table>
         </div>
         <br />
-        <a href="person.do?act=Show" class="add">Add New Person</a>
+        <a href="employee.do?act=Show" class="add">Add New Employee</a>
         
   	</div>
 </html:form>

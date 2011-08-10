@@ -5,11 +5,12 @@ import java.util.Date;
 
 import app.util.DateUtil;
 
-public class PersonForm extends BaseForm {
+public class EmployeeForm extends BaseForm {
 
 	private static final long serialVersionUID = 1716019710225925474L;
 	
 	private Long id;
+	private String npk;
 	private String name;
 	private Character gender;
 	private String webDob;
@@ -19,6 +20,13 @@ public class PersonForm extends BaseForm {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getNpk() {
+		return npk;
+	}
+	public void setNpk(String npk) {
+		this.npk = npk;
 	}
 	
 	public String getName() {

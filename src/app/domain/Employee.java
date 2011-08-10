@@ -12,14 +12,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="tbl_person")
-public class Person implements Serializable {
+@Table(name="tbl_employee")
+public class Employee implements Serializable {
 	
 	private static final long serialVersionUID = -9113678553568327829L;
 	
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Column(length=10)
+	private String npk;
 	
 	@Column(length=50)
 	private String name;
@@ -30,13 +33,23 @@ public class Person implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dob;
 	
-	public Person() {}
+	private String email;
+    private String phone;
+	
+	public Employee() {}
 	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getNpk() {
+		return npk;
+	}
+	public void setNpk(String npk) {
+		this.npk = npk;
 	}
 	
 	public String getName() {
@@ -59,5 +72,20 @@ public class Person implements Serializable {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 
 }

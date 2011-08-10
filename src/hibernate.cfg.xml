@@ -6,7 +6,7 @@
     <session-factory>
     	<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         
-        <mapping class="app.domain.Person"/>
+        <mapping class="app.domain.Employee"/>
         
     </session-factory>
 </hibernate-configuration>
